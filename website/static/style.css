@@ -1,0 +1,49 @@
+/* ===============================
+   Custom Navbar Styles
+   =============================== */
+
+/* Dark gradient background + soft shadow */
+.navbar {
+    background: linear-gradient(90deg, #343a40 0%, #212529 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+/* Remove default border on the hamburger button */
+.navbar-toggler {
+    border: none;
+}
+
+/* Custom white hamburger icon – single encoded line (no line breaks) */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Nav links: spacing, color, smooth hover effect */
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    color: #f8f9fa;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-transform: capitalize;      /* Makes 'login' -> 'Login' visually */
+}
+
+/* Hover state */
+.navbar-nav .nav-link:hover {
+    color: #ffc107;                  /* yellow highlight */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+}
+
+/* Active page link */
+.navbar-nav .nav-link.active {
+    color: #17a2b8;                  /* Bootstrap info color */
+    font-weight: 600;
+}
+
+/* Optional: slightly larger container text */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    background-color: #f8f9fa;       /* light background behind the navbar */
+}

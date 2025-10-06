@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path 
+from os import path, getenv
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -9,8 +9,13 @@ DB_NAME = "database.db"
 # Initialising Flask
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'mywebsecret'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SECRET_KEY'] = getenv('SECRET_KEY', 'mywebsecret')
+    
+    # Use PostgreSQL URL from Render in production, SQLite in development
+    if getenv('RENDER'):
+        app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL', '').replace('postgres://', 'postgresql://')
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
 
